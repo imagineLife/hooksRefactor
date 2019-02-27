@@ -1,4 +1,4 @@
-import {Component, useContext, useReducer} from 'react'
+import {Component, useContext, useReducer, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import isEqual from 'lodash/isEqual'
 import * as GitHub from '../../../github-client'
@@ -18,6 +18,31 @@ function QueryFn({query, variables, children, normalize = data => data}){
     //the initial state object
     {loaded: false, fetching: false, data: null, error: null }
   )
+
+  //replaces the componentDidMount query call
+  useEffect(() => {
+    setState({fetching: true})
+//    const client = context
+  
+    client
+      .request(query, variables)
+      .then(res =>
+        setState({
+          data: normalize(res),
+          error: null,
+          loaded: true,
+          fetching: false,
+        }),
+      )
+      .catch(error =>
+        setState({
+          error,
+          data: null,
+          loaded: false,
+          fetching: false,
+        }),
+      )
+  })
 }
 
 //2. add propTypes to fn
