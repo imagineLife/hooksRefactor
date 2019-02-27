@@ -11,6 +11,15 @@ function QueryFn({query, variables, children, normalize = data => data}){
 }
 
 //2. add propTypes to fn
+QueryFn.propTypes = {
+  query: PropTypes.string.isRequired,
+  variables: PropTypes.object,
+  children: PropTypes.func.isRequired,
+  normalize: PropTypes.func,
+}
+
+
+
 
 
 //STARTING
