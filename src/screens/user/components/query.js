@@ -3,6 +3,17 @@ import PropTypes from 'prop-types'
 import isEqual from 'lodash/isEqual'
 import * as GitHub from '../../../github-client'
 
+
+//RE-WRITE
+//1. functionize
+function QueryFn({query, variables, children, normalize = data => data}){
+
+}
+
+//2. add propTypes to fn
+
+
+//STARTING
 class Query extends Component {
   static propTypes = {
     query: PropTypes.string.isRequired,
