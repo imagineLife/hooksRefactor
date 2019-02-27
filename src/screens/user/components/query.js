@@ -1,4 +1,4 @@
-import {Component} from 'react'
+import {Component, useContext} from 'react'
 import PropTypes from 'prop-types'
 import isEqual from 'lodash/isEqual'
 import * as GitHub from '../../../github-client'
@@ -7,7 +7,7 @@ import * as GitHub from '../../../github-client'
 //RE-WRITE
 //1. functionize
 function QueryFn({query, variables, children, normalize = data => data}){
-
+  const client = useContext(GitHub.Context)
 }
 
 //2. add propTypes to fn
