@@ -1,4 +1,4 @@
-import {Component, useContext} from 'react'
+import {Component, useContext, useReducer} from 'react'
 import PropTypes from 'prop-types'
 import isEqual from 'lodash/isEqual'
 import * as GitHub from '../../../github-client'
@@ -8,6 +8,16 @@ import * as GitHub from '../../../github-client'
 //1. functionize
 function QueryFn({query, variables, children, normalize = data => data}){
   const client = useContext(GitHub.Context)
+
+  //useReducer hook to mock a state in Class component
+  const [state, setState] = useReducer(
+
+    //a fn on state/setState
+    (state, setState) => ({...state, ...newState}),
+
+    //the initial state object
+    {loaded: false, fetching: false, data: null, error: null }
+  )
 }
 
 //2. add propTypes to fn
